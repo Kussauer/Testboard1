@@ -1,23 +1,40 @@
 #include <Arduino.h>
 #include "button1.h"
+// #include "ultraschall1.h" -- über button1.h
 
-unsigned long previousMillis = 0;
+unsigned long previousMillisSonic = 0;
+unsigned long previousMillisButton = 0;
 
 void setup()
 {
-  Serial.begin(115200); // auch Konfig platformio.ini !!
-  pinMode(yellowLEDTest, OUTPUT);
-  pinMode(button1, INPUT);
+  Serial.begin(115200);           // auch Konfig platformio.ini !!
+  pinMode(yellowLEDTest, OUTPUT); // testled
+  pinMode(button1, INPUT);        // button1
+
+  // Ultraschall HC-SR04
+  pinMode(triggerPin, OUTPUT);
+  pinMode(echoPin, INPUT);
 }
 
 void loop()
 {
-  unsigned long currentMillis = millis();
 
-  if (currentMillis - previousMillis >= 150)
+  unsigned long currentMillis = millis(); // für später
+
+  /*
+  if (currentMillis - previousMillisSonic >= 5000)
   {
-    previousMillis = currentMillis;
-
-    buttonOne();
+    previousMillisSonic = currentMillis;
+    ultraschallOne();
   }
+
+
+  if (currentMillis - previousMillisButton >= 100)
+  {
+    previousMillisButton = currentMillis;
+    buttonOneBounce();
+  }
+  */
+
+  buttonOneBounce();
 }
