@@ -12,6 +12,8 @@ int valuetest = 1; // TestHilfe
 float valueTestFloat = 1.2345;  // testHilfe
 double valueTestDouble = 1.2345;   // TestHilfe
 
+int ultraschall = 0;
+
 void setup()
 {
   Serial.begin(115200);           // auch Konfig platformio.ini !!
@@ -32,7 +34,7 @@ void setup()
   oledOne.setScrollMode(SCROLL_MODE_AUTO); // AutoScroll
   oledOne.setLetterSpacing(2);
 
-  oledTest(); // Testdurchlauf im Setup
+  oledTestDurchlauf(); // Testdurchlauf im Setup
 }
 
 void loop()
@@ -40,25 +42,7 @@ void loop()
 
   unsigned long currentMillis = millis(); // für später
 
-  buttonOneBounce();
+  
 
-  // Testablauf Methoden OLED
-  delay(2000);
-  oledOne.print(" Nummer ");
-  oledOne.println(zaehler);
-  zaehler = zaehler + 1;
-  delay(2000);
-
-  oledDisplayText(" test");
-  delay(2000);
-  oledOne.print(" ");
-  oledDisplayInt(valuetest);
-
-  delay(2000);
-  oledOne.print(" ");
-  oledDisplayFloat(valueTestFloat);
-
-  delay(2000);
-  oledOne.print(" ");
-  oledDisplayDouble(valueTestDouble);
+  
 }

@@ -4,7 +4,7 @@
 #define I2C_ADDRESS 0x3C
 SSD1306AsciiWire oledOne; // Displayname oledOne
 
-void oledTest()
+void oledTestDurchlauf()
 {
     // Anzeige OLED
     oledOne.clear();
