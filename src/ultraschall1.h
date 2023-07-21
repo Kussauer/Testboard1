@@ -1,5 +1,5 @@
 
-int echoPin = 9;
+int echoPin = 4;
 int triggerPin = 8;
 long duration = 0;
 long distance = 0;
