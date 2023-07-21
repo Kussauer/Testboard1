@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "button1.h"
 #include "oledDisplayOne.h"
+#include "bewegungsmelder1.h"
 
 #include <Wire.h>
 
@@ -34,7 +35,10 @@ void setup()
   oledOne.setScrollMode(SCROLL_MODE_AUTO); // AutoScroll
   oledOne.setLetterSpacing(2);
 
-  oledTestDurchlauf(); // Testdurchlauf im Setup
+  //oledTestDurchlauf(); // Testdurchlauf im Setup
+
+  // Bewegungsmelder1
+  pinMode(bewegung, INPUT);
 }
 
 void loop()
@@ -42,7 +46,22 @@ void loop()
 
   unsigned long currentMillis = millis(); // für später
 
+  // Testlauf
+  Serial.print("Test ");
+  zaehler = zaehler + 1;
+  Serial.println(zaehler);
+  oledDisplayInt(zaehler);
+  delay(2000);
   
+  // Bewegungssensor
+  int moveReg = bewegungsMessung();
+  if (moveReg == 1){
+    Serial.println("Bewegung registriert");
+    oledDisplayText("Bewegung");
+
+  } else {
+    Serial.println("Keine Bewegung registriert");
+  }
 
   
 }

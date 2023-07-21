@@ -16,21 +16,21 @@ void oledTestDurchlauf()
     delay(4000);
 }
 
-String oledDisplayText(String text)
+void oledDisplayText(String text)
 {
     oledOne.println(text);
 }
 
-int oledDisplayInt(int value)
+void oledDisplayInt(int value)
 {
     oledOne.println(value);
 }
 
-float oledDisplayFloat(float valueFloat)
+void oledDisplayFloat(float valueFloat)
 {
     oledOne.println(valueFloat);
 }
 
-double oledDisplayDouble(double valueDouble){
+void oledDisplayDouble(double valueDouble){
     oledOne.println(valueDouble);
 }
