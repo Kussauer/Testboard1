@@ -2,12 +2,12 @@
 #include "button1.h"
 #include "oledDisplayOne.h"
 #include "bewegungsmelder1.h"
+#include <MFRC522.h>
 
 #include <Wire.h>
 #include <SPI.h>
 
 // RFID RC522
-#include <MFRC522.h>
 #define SS_PIN 10 // SDA
 #define RST_PIN 9 // RST
 
