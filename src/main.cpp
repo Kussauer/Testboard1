@@ -14,12 +14,15 @@
 // unsigned long previousMillisSonic = 0;
 // unsigned long previousMillisButton = 0;
 
-int zaehler = 0;                 // TestHilfe
+/* int zaehler = 0;                 // TestHilfe
 int valuetest = 1;               // TestHilfe
 float valueTestFloat = 1.2345;   // testHilfe
-double valueTestDouble = 1.2345; // TestHilfe
+double valueTestDouble = 1.2345; // TestHilfe 
+*/
 
 int ultraschall = 0;
+
+long rfid_code = 0;
 
 /*=====================================================*/
 
@@ -60,46 +63,8 @@ void loop()
 
   unsigned long currentMillis = millis(); // für später
 
-
-  // RFID
-
-  if (!mfrc522.PICC_IsNewCardPresent())
-  {
-    return;
-  }
-
-  if (!mfrc522.PICC_ReadCardSerial())
-  {
-    return;
-  }
-
-  Serial.print("TAG-ID: ");
-  long code = 0;
-
-  for (byte i = 0; i < mfrc522.uid.size; i++)
-  {
-    code = ((code + mfrc522.uid.uidByte[i]) * 10);
-  }
-
-  Serial.println(code);
-  // toggleYellowLedTest();
-
-  if (code == 2016530)
-  {
-    einschaltenYellowLedTest();
-    oledOne.println("Hallo Jenny");
-    delay(2500);
-    aussschaltenYellowLedTest();
-  }
-  else if (code == 609130)
-  {
-    einschaltenYellowLedTest();
-    oledOne.println("Hallo Nick");
-    delay(2500);
-    aussschaltenYellowLedTest();
-  }
-  else
-  {
-    toggleYellowLedTest();
-  }
+  rfid_code = 0;
+  rfid_code = check_rfid_users_id();
+  action_rfid_users_id_correct(rfid_code);
+  
 }
