@@ -3,7 +3,8 @@
 #include "oledDisplayOne.h"
 #include "bewegungsmelder1.h"
 #include "rfid1.h"
-
+#include "SoftwareSerial.h"
+#include "DFRobotDFPlayerMini.h"
 
 #include <Wire.h>
 #include <SPI.h>
@@ -11,14 +12,6 @@
 
 
 
-// unsigned long previousMillisSonic = 0;
-// unsigned long previousMillisButton = 0;
-
-/* int zaehler = 0;                 // TestHilfe
-int valuetest = 1;               // TestHilfe
-float valueTestFloat = 1.2345;   // testHilfe
-double valueTestDouble = 1.2345; // TestHilfe 
-*/
 
 int ultraschall = 0;
 
