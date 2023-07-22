@@ -2,16 +2,14 @@
 #include "button1.h"
 #include "oledDisplayOne.h"
 #include "bewegungsmelder1.h"
-#include <MFRC522.h>
+#include "rfid1.h"
+
 
 #include <Wire.h>
 #include <SPI.h>
 
-// RFID RC522
-#define SS_PIN 10 // SDA
-#define RST_PIN 9 // RST
 
-MFRC522 mfrc522(SS_PIN, RST_PIN);
+
 
 // unsigned long previousMillisSonic = 0;
 // unsigned long previousMillisButton = 0;
@@ -22,6 +20,8 @@ float valueTestFloat = 1.2345;   // testHilfe
 double valueTestDouble = 1.2345; // TestHilfe
 
 int ultraschall = 0;
+
+/*=====================================================*/
 
 void setup()
 {
@@ -53,33 +53,13 @@ void setup()
   mfrc522.PCD_Init();
 }
 
-/* ------Loop------------*/
+/* =============================================*/
 
 void loop()
 {
 
   unsigned long currentMillis = millis(); // für später
 
-  // Testlauf
-  /*
-  Serial.print("Test ");
-  zaehler = zaehler + 1;
-
-  Serial.println(zaehler);
-  oledDisplayInt(zaehler);
-  delay(2000);
-
-  // Bewegungssensor
-  int moveReg = bewegungsMessung();
-  if (moveReg == 1){
-    Serial.println("Bewegung registriert");
-    oledDisplayText("Bewegung");
-
-  } else {
-    Serial.println("Keine Bewegung registriert");
-  }
-
-*/
 
   // RFID
 

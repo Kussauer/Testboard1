@@ -1,7 +1,8 @@
 #include "SSD1306Ascii.h"
 #include "SSD1306AsciiWire.h"
 
-#define I2C_ADDRESS 0x3C
+
+#define I2C_ADDRESS 0x3C // OledOne
 SSD1306AsciiWire oledOne; // Displayname oledOne
 
 void oledTestDurchlauf()
