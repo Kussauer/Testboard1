@@ -1,5 +1,5 @@
 
-int echoPin = 4;
+int echoPin = 4; //// AUFPASSEN !!!
 int triggerPin = 8;
 long duration = 0;
 long distance = 0;
