@@ -1,8 +1,10 @@
 #include "SoftwareSerial.h"
 #include "DFRobotDFPlayerMini.h"
 
-// DFPlayer
-SoftwareSerial mySoftwareSerial(2,3);
+int dfPlayer_rx = 2;
+int dfPlayer_tx = 3;
+
+SoftwareSerial mySoftwareSerial(dfPlayer_rx,dfPlayer_tx);
 DFRobotDFPlayerMini myDFPlayer;
 void printDetail(uint8_t type, int value);
 

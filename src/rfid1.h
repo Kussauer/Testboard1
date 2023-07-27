@@ -13,23 +13,19 @@ long checked_code = 0;
 long check_rfid_users_id()
 {
     code = 0; // 0-setzen des Wertes !!!
-    Serial.println("Testline1");
-    Serial.println(code);
-    delay(1000);
+    
 
     if (!mfrc522.PICC_IsNewCardPresent())
     {
-        Serial.println("Testline4");
-        Serial.println(code);
-        delay(1000);
+
+        
         return code;
     }
 
     if (!mfrc522.PICC_ReadCardSerial())
     {
-        Serial.println("Testline3");
-        Serial.println(code);
-        delay(1000);
+        
+        
         return code;
 
     }
@@ -41,11 +37,6 @@ long check_rfid_users_id()
     {
         code = ((code + mfrc522.uid.uidByte[i]) * 10);
     }
-
-    Serial.println(code);
-    Serial.println("Testline2");
-    Serial.println(code);
-    delay(1000);
 
     return code;
 }
