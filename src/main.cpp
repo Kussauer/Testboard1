@@ -7,6 +7,8 @@
 #include "SoftwareSerial.h"
 #include "DFRobotDFPlayerMini.h"
 
+//
+
 #include <Wire.h>
 #include <SPI.h>
 
@@ -19,6 +21,20 @@ const long button1Intervall = 50;        // Button1
 const long buttonAbfragepause = 1000;
 unsigned long timerButton = 0;
 int statusButton1 = 0; // Button1
+
+// ServoTreiber
+/*
+Adafruit_PWMServoDriver myServos = Adafruit_PWMServoDriver();
+
+#define SERVOMIN 150
+#define SERVOMAX 600
+#define USMIN 600
+#define USMAX 2400
+#define SERVO_FREQ 50
+
+uint8_t servonum = 0;
+uint8_t numberOfServos = 2;
+*/
 
 /*=====================================================*/
 
@@ -73,14 +89,20 @@ void setup()
 
   // myDFPlayer.setTimeOut(500);
   myDFPlayer.volume(30);
-  // myDFPlayer.play(2);
+  myDFPlayer.play(2);
   myDFPlayer.EQ(DFPLAYER_EQ_NORMAL);
+
+  // Servotreiber
+  Serial.println("Servotest");
+  myServos.begin();
+  myServos.setPWMFreq(SERVO_FREQ);
 }
 
 /* ================== LOOP ===========================*/
 
 void loop()
 {
+  Serial.println("Test");
 
   unsigned long currentMillis = millis(); // für später
 
@@ -90,7 +112,7 @@ void loop()
 
   // Button
   if (currentMillis - previousButton1Millis >= button1Intervall)
-  {  // wird noch nach button1.h verschoben
+  { // wird noch nach button1.h verschoben
     statusButton1 = statusButtonWiderstand();
     Serial.print("StatusButton 1 = ");
     Serial.println(statusButton1);
@@ -121,4 +143,7 @@ void loop()
       printDetail(myDFPlayer.readType(), myDFPlayer.read()); // Print the detail message from DFPlayer to handle different errors and states.
     }
   */
+
+  
+
 }

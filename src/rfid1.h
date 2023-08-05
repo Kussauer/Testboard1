@@ -1,6 +1,7 @@
 #include <MFRC522.h>
 #include "rfidUsersList.h"
 #include "dfPlayer.h"
+#include "servoTreiber1.h"
 
 #define SS_PIN 10 // SDA
 #define RST_PIN 9 // RST
@@ -13,21 +14,17 @@ long checked_code = 0;
 long check_rfid_users_id()
 {
     code = 0; // 0-setzen des Wertes !!!
-    
 
     if (!mfrc522.PICC_IsNewCardPresent())
     {
 
-        
         return code;
     }
 
     if (!mfrc522.PICC_ReadCardSerial())
     {
-        
-        
-        return code;
 
+        return code;
     }
 
     Serial.print("TAG-ID: ");
@@ -41,11 +38,10 @@ long check_rfid_users_id()
     return code;
 }
 
-
 long action_rfid_users_id_correct(long checked_code)
 {
     code = checked_code;
-    
+
     switch (code)
     {
     case 2016530:
@@ -60,8 +56,10 @@ long action_rfid_users_id_correct(long checked_code)
         einschaltenYellowLedTest();
         oledOne.println("Hallo Nick");
         myDFPlayer.play(7);
+        servo1Offen();
         delay(2500);
         aussschaltenYellowLedTest();
+        servo1Geschlossen();
         break;
 
     case 0:
@@ -70,8 +68,5 @@ long action_rfid_users_id_correct(long checked_code)
     default:
         myDFPlayer.play(5);
         toggleYellowLedTest();
-
     }
-
 }
-
